@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id         String     @id @default(cuid())
+  email      String     @unique
+  password   String?    // Optional if using OAuth
+  name       String?
+  avatar     String?
+  provider   String     @default("local") // 'local', 'google', etc.
+  isVerified Boolean    @default(false)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+
+  projects   Project[]
+  sessions   Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions") // So it works with express-session
+}
+
+model Project {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  iterations  Iteration[]
+}
+
+model Iteration {
+  id          String      @id @default(cuid())
+  projectId   String
+  project     Project     @relation(fields: [projectId], references: [id])
+
+  prompt      String      // What the user asked
+  aiResponse  String?     // What the AI returned
+  code        String?     // Code snippet generated
+  videoUrl    String?     // URL to video in S3
+  status      IterationStatus @default(PENDING)
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum IterationStatus {
+  PENDING
+  PROCESSING
+  COMPLETE
+  FAILED
+}

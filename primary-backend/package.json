@@ -1,0 +1,37 @@
+{
+  "name": "manim-primary-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.812.0",
+    "@prisma/client": "^6.8.2",
+    "@quixo3/prisma-session-store": "^3.1.13",
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "bullmq": "^5.52.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-flash": "^0.0.2",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "http": "^0.0.1-security",
+    "ioredis": "^5.6.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "redis": "^5.0.1",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.8.2"
+  }
+}

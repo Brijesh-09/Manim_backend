@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/1185818338_3928611673_223132457.mp4'
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/624642324_1585842715_111405118.mp4'
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/624642324_233639657_2072530128.mp4'
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/624642324_2982400367_301049155.mp4'
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/624642324_230064059_3217718759.mp4'
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/624642324_2844360058_356448757.mp4'
+file 'file:/manim/media/videos/main/480p15/partial_movie_files/MyScene/624642324_3307391153_3060289827.mp4'

@@ -1,0 +1,9 @@
+# Ignore .env files everywhere
+.env
+**/.env
+
+# Other entries
+images
+media
+node_modules
+package-lock.json
