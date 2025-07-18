@@ -35,25 +35,27 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Session configuration with Prisma store
 app.use(session({
-  cookie: {
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
-  },
-  secret: process.env.SESSION_SECRET ,
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,            // ✅ required for HTTPS
+    sameSite: "none",        // ✅ allow cross-origin cookies
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  },
   store: new PrismaSessionStore(
     prisma,
     {
-      checkPeriod: 2 * 60 * 1000, // Check for expired sessions every 2 minutes
+      checkPeriod: 2 * 60 * 1000,
       dbRecordIdIsSessionId: true,
-      dbRecordIdFunction: undefined,
     }
   )
 }));
-app.set('trust proxy', 2);
+
+
+
+app.set('trust proxy', 1);
 app.set('io', io);
 // Flash messages
 app.use(flash());
