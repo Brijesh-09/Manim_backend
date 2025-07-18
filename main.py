@@ -9,15 +9,15 @@ import shutil
 import requests
 
 # Directories
-# RENDER_DIR = "/app/render"
-# OUTPUT_DIR = "/app/render/output"
-# MEDIA_DIR = "/app/media/videos"
+RENDER_DIR = "/app/render"
+OUTPUT_DIR = "/app/render/output"
+MEDIA_DIR = "/app/media/videos"
 
-RENDER_DIR = "/tmp/render"
-OUTPUT_DIR = os.path.join(RENDER_DIR, "output")
-MEDIA_DIR = "/tmp/media/videos"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-os.makedirs(MEDIA_DIR, exist_ok=True)
+# RENDER_DIR = "/tmp/render"
+# OUTPUT_DIR = os.path.join(RENDER_DIR, "output")
+# MEDIA_DIR = "/tmp/media/videos"
+# os.makedirs(OUTPUT_DIR, exist_ok=True)
+# os.makedirs(MEDIA_DIR, exist_ok=True)
 
 # Environment Variables
 S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME")
