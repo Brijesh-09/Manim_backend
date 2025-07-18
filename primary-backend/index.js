@@ -20,23 +20,18 @@ const io = new SocketIO(server, {
 });
 
 app.use(cors({
-  origin: 'http://localhost:3000',undefined, // Replace with your frontend origin
+  origin: 'https://promanim.vercel.app', // ✅ Only this
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// CORS configuration
-// app.use(cors({
-//   origin: process.env.CLIENT_URL || 'http://localhost:3000',
-//   credentials: true, // Important for sessions
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+
 
 // Session configuration with Prisma store
 app.use(session({
